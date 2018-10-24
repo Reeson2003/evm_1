@@ -6,3 +6,10 @@ set(CMAKE_CXX_STANDARD 14)
 
 add_executable(evm_1 task_1/task_1.cpp)
 add_executable(evm_2 task_2/task_2.cpp)
+
+set(CURSES_NEED_NCURSES TRUE)
+find_package(Curses REQUIRED)
+if (CURSES_FOUND AND CURSES_HAVE_NCURSES_H)
+    include_directories(${CURSES_INCLUDE_DIR})
+    target_link_libraries (evm_2 ${CURSES_LIBRARIES})
+endif()
