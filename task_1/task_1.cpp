@@ -1,16 +1,8 @@
 #include <iostream>
 #include <bitset>
 
-static const char *const title = "Организация ЭВМ";
-static const char *const taskNumber = "Работа №";
-static const char *const variant = "Вариант: ";
-static const char *const madeBy = "Выполнил: ";
-static const char *const task = "Задание: ";
-
-void showStartMessage();
-
 template<typename T>
-int runDouble();
+int run();
 
 void showNoArgError();
 
@@ -34,16 +26,15 @@ union Utype {
 };
 
 int main(int argc, char *argv[]) {
-    showStartMessage();
     if (argc == 1) {
         showNoArgError();
         return -1;
     } else {
         const char *arg = argv[1];
         if (string(arg) == "uint") {
-            return runDouble<u_int>();
+            return run<u_int>();
         } else if (string(arg) == "double") {
-            return runDouble<double>();
+            return run<double>();
         } else {
             showWrongArgError(arg);
             return -1;
@@ -61,7 +52,7 @@ void showNoArgError() {
 }
 
 template<typename T>
-int runDouble() {
+int run() {
     const int typeLength = sizeof(T) * 8;
     const int typeMaxBitNumber = typeLength - 1;
     T number(0);
@@ -125,14 +116,3 @@ T getNumber() {
 }
 
 void showError() { cout << "Ошибка!!!" << endl; }
-
-void showStartMessage() {
-    cout << "\t\t" << title << endl;
-    cout << endl;
-    cout << taskNumber << 1 << endl;
-    cout << variant << 4 << endl;
-    cout << madeBy << "Гаврилов П.А." << endl;
-    cout << task << "Установить в заданное пользователем состояние определённое количество рядом стоящих бит, "
-         << "номер младшего из которых, как и всё остclecальное, вводится с клавиатуры." << endl;
-    cout << endl;
-}
