@@ -6,6 +6,7 @@ set(CMAKE_CXX_STANDARD 14)
 
 add_executable(evm_1 task_1/task_1.cpp)
 add_executable(evm_2 task_2/task_2.cpp)
+add_executable(evm_5 task_5/task_5.cpp)
 
 set(CURSES_NEED_NCURSES TRUE)
 find_package(Curses REQUIRED)
